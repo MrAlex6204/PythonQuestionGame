@@ -79,9 +79,11 @@ class AskQuestion:
 			Answered: %s
 			Right answer is %s		
 			"""%(self.strQuestion," ".join(self.lstOptions),self.oUsrAnswer,self.oAnswer))
-			
+	
+	#Save current question content into a file		
 	def save(self,fileFullName,mode):
 		fs = open(fileFullName,mode)
+		#Write the content returned by the method __str__ calling self
 		fs.write(("%s\n"%self))
 		fs.flush()
 		fs.close()
