@@ -1,7 +1,7 @@
 #!
 #-*-encoding:utf-8-*-
 
-from Question import AskQuestion, loadQuestionsFromFile
+from Question import AskQuestion, loadQuestionsLstFromFile
 
 answered = 0
 #Create a list of AskQuestion objects
@@ -32,11 +32,11 @@ for iQuestion in testQuestions:
 	#Call ask method from the AskQuestion class
 	iQuestion.ask()
 	#Get if the answer given by the user is right
-	if iQuestion.isRight:
+	if iQuestion.IsRight:
 		#Sum a point if the answer given is right
 		answered +=1
 	#Save current question into a text file as append mode
-	iQuestion.save("TestResults","at")
+	iQuestion.save("TestResults")
 	
 print("You answered %i of %i"%(answered,len(testQuestions)))
 
@@ -45,7 +45,7 @@ print("""
 """)
 
 #Load the answered questions from the file 
-answeredQuestions = loadQuestionsFromFile("TestResults")
+answeredQuestions = loadQuestionsLstFromFile("TestResults")
 
 #Display each question and the corresponding answer
 for iQuestion in answeredQuestions:

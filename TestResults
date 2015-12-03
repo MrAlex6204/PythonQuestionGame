@@ -1,0 +1,4 @@
+{'OptionLst': ['a) 3', 'b) 5', 'c) 0'], 'RigthAswer': 'b', 'Question': '4+x+1 = 10 which value is x ?', 'UserAnswer': '5', 'IsRight': False}
+{'OptionLst': ['1) Yes', '2) No'], 'RigthAswer': '1', 'Question': 'Is 6 > -6 ?', 'UserAnswer': '1', 'IsRight': True}
+{'OptionLst': ['a) C++', 'b) Java', 'c) C#', 'd) none'], 'RigthAswer': 'd', 'Question': 'Wich programing language inherits from C', 'UserAnswer': 'd', 'IsRight': True}
+{'OptionLst': ['a) 1', 'b) 10', 'c) 0', 'd) none'], 'RigthAswer': 'd', 'Question': '\n\tResolve x and y value\n\t(y*y)*2 = 200', 'UserAnswer': 'b', 'IsRight': False}

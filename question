@@ -1,0 +1,3 @@
+{'RigthAswer': 'b', 'OptionLst': ['a) Yes', 'b) No'], 'Question': 'Is 6 > -6 ?', 'UserAnswer': 'b', 'IsRight': True, 'id': 1}
+{'RigthAswer': 'b', 'OptionLst': ['a) Yes', 'b) No'], 'Question': 'Is 6 > -6 ?', 'UserAnswer': 'a', 'IsRight': False, 'id': 1}
+{'RigthAswer': 'b', 'OptionLst': ['a) Yes', 'b) No'], 'Question': 'Is 6 > -6 ?', 'UserAnswer': '1', 'IsRight': False, 'id': 1}
