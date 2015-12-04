@@ -30,12 +30,13 @@ testQuestions = [
 #Loop each item from the list
 for iQuestion in testQuestions:
 	#Call ask method from the AskQuestion class
-	iQuestion.ask()	
+	iQuestion.ask()
+	#Get if the answer given by the user is right
+	if iQuestion.IsRight:
+		#Sum a point if the answer given is right
+		answered +=1
+	#Save current question into a text file as append mode
 	iQuestion.save("TestResults")
-
-#Loop Calculate how many questions are Ok from the Qestion List
-#Loop through to all question list and filter only the those that are Ok.
-answered = len([ok for ok in testQuestions if ok.IsRight])
 	
 print("You answered %i of %i"%(answered,len(testQuestions)))
 
