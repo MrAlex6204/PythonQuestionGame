@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import ast
 
 #This load all questions from the specified file
