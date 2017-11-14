@@ -1,7 +1,7 @@
 #!
 #-*-encoding:utf-8-*-
 
-from Question import AskQuestion, loadQuestionsLstFromFile
+from Question import AskQuestion
 
 answered = 0
 #Create a list of AskQuestion objects
@@ -44,7 +44,7 @@ print("""
 """)
 
 #Load the answered questions from the file 
-answeredQuestions = loadQuestionsLstFromFile("TestResults")
+answeredQuestions = AskQuestion.loadQuestionsLstFromFile("TestResults")
 
 #Display each question and the corresponding answer
 for iQuestion in answeredQuestions:

@@ -1,33 +1,37 @@
 #!/usr/bin/env python
 
 import ast
+import pickle
 
-#This load all questions from the specified file
-def loadQuestionsLstFromFile(fileFullName,loadingQuestionEventHanler=None):
-	questionsLst = []
-	fs = open(fileFullName,"rt")
-	while True:
-		line = fs.readline()
-		if len(line) > 0:
-			#Unserialize the string into a dictionary object
-			questionValues = ast.literal_eval(line)
-			#Create a new AskQuestion object
-			iQuestion = AskQuestion(questionValues["Question"],questionValues["OptionLst"],questionValues["RigthAswer"])			
-			iQuestion.IsRight = questionValues["IsRight"]
-			iQuestion.UserAnswer = questionValues["UserAnswer"]
-			if not loadingQuestionEventHanler == None:
-				#Calling loadingQuestionEventHanler
-				loadingQuestionEventHanler(iQuestion,questionValues)
-			#Add question object to the list
-			questionsLst.append(iQuestion)			
-		else:
-			break
-	#Return list		
-	return questionsLst	
-	
+
 
 class AskQuestion:
 	savingQuestionEventHanlder = None
+	
+	@staticmethod #Se this method as static
+	def loadQuestionsLstFromFile(fileFullName,loadingQuestionEventHanler=None):
+		"""This load all questions from the specified file"""
+		questionsLst = []
+		fs = open(fileFullName,"rt")
+		while True:
+			line = fs.readline()
+			if len(line) > 0:
+				#Unserialize the string into a dictionary object
+				questionValues = ast.literal_eval(line)
+				#Create a new AskQuestion object
+				iQuestion = AskQuestion(questionValues["Question"],questionValues["OptionLst"],questionValues["RigthAswer"])			
+				iQuestion.IsRight = questionValues["IsRight"]
+				iQuestion.UserAnswer = questionValues["UserAnswer"]
+				if not loadingQuestionEventHanler == None:
+					#Calling loadingQuestionEventHanler
+					loadingQuestionEventHanler(iQuestion,questionValues)
+				#Add question object to the list
+				questionsLst.append(iQuestion)			
+			else:
+				break
+		fs.close()
+		#Return list		
+		return questionsLst	
 		
 	def __init__(self,Question,OptionLst,RightAnswer):
 		self.Question = Question
@@ -99,6 +103,7 @@ class AskQuestion:
 
 
 if __name__=="__main__":
+	import os
 	counter = 0
 	def savingQuestionEvent(sender,questionValues):
 		sender.id = (counter+1)
@@ -111,12 +116,14 @@ if __name__=="__main__":
 		* DEBUG MODE *
 		**************
 	""")
+	
+	print("File path:{0}".format(os.path.dirname(os.path.realpath("__file__"))))
 	question = AskQuestion("Is 6 > -6 ?",["a) Yes","b) No"],"b")
 	question.savingQuestionEventHanlder = savingQuestionEvent
 	question.ask()
 	question.save("question")
 	
-	questionsLst = loadQuestionsLstFromFile("question",loadingQuestionEvent)
+	questionsLst = AskQuestion.loadQuestionsLstFromFile("question",loadingQuestionEvent)
 	
 	print("The question id is %s"%questionsLst[0].id)
 	
